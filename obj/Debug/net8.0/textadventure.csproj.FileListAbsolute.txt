@@ -1,0 +1,15 @@
+C:\Users\a24sames\RiderProjects\textadventure\bin\Debug\net8.0\textadventure.exe
+C:\Users\a24sames\RiderProjects\textadventure\bin\Debug\net8.0\textadventure.deps.json
+C:\Users\a24sames\RiderProjects\textadventure\bin\Debug\net8.0\textadventure.runtimeconfig.json
+C:\Users\a24sames\RiderProjects\textadventure\bin\Debug\net8.0\textadventure.dll
+C:\Users\a24sames\RiderProjects\textadventure\bin\Debug\net8.0\textadventure.pdb
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\textadventure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\textadventure.AssemblyInfoInputs.cache
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\textadventure.AssemblyInfo.cs
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\textadventure.csproj.CoreCompileInputs.cache
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\textadventure.sourcelink.json
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\textadventure.dll
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\refint\textadventure.dll
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\textadventure.pdb
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\textadventure.genruntimeconfig.cache
+C:\Users\a24sames\RiderProjects\textadventure\obj\Debug\net8.0\ref\textadventure.dll
