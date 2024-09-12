@@ -220,6 +220,7 @@ public class Rooms
     public static void GameOver(Hero hero)
     {   
         // reset hero and monster (add monster to third room)
+        // TODO: hero.Defending not resetting on new round
         throw new NotImplementedException();
     }
 }
