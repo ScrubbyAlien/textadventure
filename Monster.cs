@@ -2,13 +2,14 @@
 
 public class Monster
 {
-    private int _health;
-    private int _strength;
+    public int Health;
+    public int Strength;
+    private string _name;
+    public bool Dancing;
 
-    public Monster(int health, int strength)
+    public Monster(string name)
     {
-        _health = health;
-        _strength = strength;
+        _name = name;
     }
     
     public void MakeAttack(Hero hero)
@@ -16,12 +17,28 @@ public class Monster
         switch (Program.RollDice(3))
         {
             case 1:
-                Console.WriteLine("The minotaur psychs itself up with a war cry. \n" +
-                                  "Somehow the muscles become even larger");
-                _strength += 15;
+                if (_name == "minotaur")
+                {
+                    Console.WriteLine("The minotaur psychs itself up with a war cry. \n" +
+                                      "Somehow the muscles become even larger");
+                    Strength += 15;
+                }
+
+                if (_name == "goblin")
+                {
+                    goto case 2;
+                }
                 break;
             case 2:
-                if (hero.Defending)
+                if (_name == "goblin")
+                {
+                    Dancing = false;
+                    Console.WriteLine("The goblin slashes you with its rugged sword.");
+                    if (hero.Defending) Console.WriteLine("The goblin slashes your arm. It hurts despite bracing yourself.");
+                    hero.TakeDamage(10);
+                    break;
+                }
+                if (_name == "minotaur" && hero.Defending)
                 {
                     Console.WriteLine("You manage to move out of the way of the charging beast. \n" +
                                       "It runs into the wall behind you. It looks like it hurt.");
@@ -29,17 +46,29 @@ public class Monster
                     break;
                 }
                 goto case 3;
-            case 3: 
-                Console.WriteLine("The minotaur charges at you and strikes you with its horns.");
-                if (hero.Defending)
+            case 3:
+                if (_name == "minotaur")
                 {
-                    hero.TakeDamage(_strength - 15);
-                    Console.WriteLine("It hurts but bracing yourself helped.");
+                    Console.WriteLine("The minotaur charges at you and strikes you with its horns.");
+                    if (hero.Defending)
+                    {
+                        hero.TakeDamage(Strength - 15);
+                        Console.WriteLine("It hurts but bracing yourself helped.");
+                        break;
+                    }
+                    hero.TakeDamage(Strength);
+                    Console.WriteLine("The horns strike you in your chest painfully.");
+                    break;    
+                }
+
+                if (_name == "goblin")
+                {
+                    Dancing = true;
+                    Console.WriteLine("The goblin starts rocking out. It seems difficult to land a hit.");
                     break;
                 }
-                hero.TakeDamage(_strength);
-                Console.WriteLine("The horns strike you in your chest painfully.");
-                break;    
+
+                break;
                 
         }
         
@@ -47,11 +76,17 @@ public class Monster
 
     public void TakeDamage(int damage)
     {
-        _health -= damage;
+        Health -= damage;
     }
 
     public bool Defeated()
     {
-        return _health <= 0;
+        return Health <= 0;
+    }
+
+    public void Reset(int health, int strength)
+    {
+        Health = health;
+        Strength = strength;
     }
 }

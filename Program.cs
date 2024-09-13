@@ -7,28 +7,16 @@ namespace TextAdventure
     {
         static void Main(string[] args)
         {
-            /*Console.WriteLine("Welcome to Text Adventure!!!!!!!!!!!");
-
-            string name = "";
-            while (name == "")
-            {
-                name = Ask("What is your name adventurer?\n");
-
-                if (!AskYesOrNo($"Is your name {name}?"))
-                {
-                    name = "";
-                }
-            }*/
-
             Hero hero = new();
-            Monster minotaur = new Monster(250, 30);
+            Monster minotaur = new("minotaur");
+            Monster goblin = new("goblin");
             while (hero.Location != "quit") 
             {
                 Console.Clear();
                 switch (hero.Location)
                 {
                     case "newgame":
-                        NewGame(hero);
+                        NewGame(hero, minotaur, goblin);
                         break;
                     
                     case "tableroom":
@@ -44,7 +32,7 @@ namespace TextAdventure
                         break;
                     
                     case "thirdroom":
-                        Rooms.ThirdRoom(hero);
+                        Rooms.ThirdRoom(hero, goblin);
                         break;
                     
                     case "backoutside":
@@ -64,7 +52,7 @@ namespace TextAdventure
                         break;
                     
                     case "gameover":
-                        Rooms.GameOver(hero);
+                        Rooms.GameOver(hero, minotaur);
                         break;
                     
                     default:
@@ -74,7 +62,7 @@ namespace TextAdventure
             }
         }
 
-        static void NewGame(Hero hero)
+        static void NewGame(Hero hero, Monster minotaur, Monster goblin)
         {
             Console.WriteLine("Welcome to Text Adventure!!!!!!!!!!!");
 
@@ -91,6 +79,9 @@ namespace TextAdventure
 
             hero.Name = name;
             hero.Location = "tableroom";
+            minotaur.Reset(250, 20);
+            goblin.Reset(110, 10);
+
         }
 
         

@@ -21,4 +21,13 @@ public class Hero
     {
         Health -= damage;
     }
+
+    public void Reset()
+    {
+        Name = "";
+        Health = 100;
+        Items = new List<string>();
+        Location = "newgame";
+        Defending = false;
+    }
 }

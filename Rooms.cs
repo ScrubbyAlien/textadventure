@@ -1,6 +1,6 @@
 ﻿namespace TextAdventure;
 
-public class Rooms
+public static class Rooms
 {
     public static void TableRoom(Hero hero)
     {
@@ -91,13 +91,72 @@ public class Rooms
         hero.Location = "thirdroom";
     }
 
-    public static void ThirdRoom(Hero hero)
+    public static void ThirdRoom(Hero hero, Monster goblin)
     {
         Console.WriteLine("Upon entering the room you find a lifeless corpse on the ground in front of you.\n" +
                           "Its hand is clasped around something shiny.\n");
 
         if (Program.AskYesOrNo("Do you want to steal the shiny object?"))
         {
+            //here we fight
+            Console.WriteLine("As you move to pick up the shiny object, a goblin ambushes you from the shadow!\n" +
+                              "(press enter to fight!)");
+            Console.ReadLine();
+            while (!goblin.Defeated())
+            {
+                Console.Clear();
+                hero.Defending = false;
+                if (goblin.Dancing) Console.WriteLine("The goblin is rocking out! What do you do?");
+                else Console.WriteLine("The goblin prepares itself! What do you do?");
+                switch (Program.MakeDecision(["attack", "defend", "talk"]))
+                {
+                    case "attack":
+                        if (goblin.Dancing)
+                        {
+                            if (Program.RollDice(2) == 2)
+                            {
+                                Console.WriteLine("You swing at the goblin and draw blood.");
+                                goblin.TakeDamage(hero.GetDamage());
+                                break;
+                            }
+                            Console.WriteLine("The goblin's dancing was too much and you miss your swing.");
+                            break;
+                        }
+                        Console.WriteLine("You swing at the goblin and draw blood.");
+                        goblin.TakeDamage(hero.GetDamage());
+                        break;
+                    case "defend":
+                        Console.WriteLine("You put your arms up and brace for the incoming attack.");
+                        hero.Defending = true;
+                        break;
+                    case "talk":
+                        Console.WriteLine("You attempt to talk to the goblin but it does not listen.");
+                        break;
+                }
+
+                if (!goblin.Defeated())
+                {
+                    goblin.MakeAttack(hero);
+                    if (hero.Health <= 0)
+                    {
+                        Console.WriteLine("The goblin slashes your throat and you bleed out on the ground.\n" +
+                                          "(press enter to continue)");
+                        Console.ReadLine();
+                        hero.Location = "lose";
+                        return; // exit back to main loop
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The goblin falls dead to the ground.");
+                }
+                
+                Console.WriteLine("(press enter to continue)");
+                Console.ReadLine();
+            }
+            
+            Console.Clear();
+            Console.WriteLine("The goblin lies dead on the ground and you return to your business.");
             Console.WriteLine("You pick up the shiny amulet.");
 
             if (Program.RollDice(6) >= 3)
@@ -127,6 +186,7 @@ public class Rooms
 
     public static void BossFight(Hero hero, Monster minotaur)
     {
+        hero.Defending = false; // reset defending flag
         Console.WriteLine("The minotaur is preparing to charge at you. What do you do?\n" +
                           "Attack it? Defend yourself? Try to talk it out?");
         List<string> answerList = ["attack", "defend", "talk"];
@@ -207,20 +267,33 @@ public class Rooms
 
     public static void Win(Hero hero)
     {
-        //win dialog
-        throw new NotImplementedException();
+        Console.WriteLine("Congratulations! You have defeated the monster and escaped the dungeon.\n" +
+                          "Fresh air greets your lungs and a whole world is out there to explore!\n" +
+                          "(press enter to continue)");
+        hero.Location = "gameover";
+        Console.ReadLine();
     }
 
     public static void Lose(Hero hero)
     {
-        //lose dialog
-        throw new NotImplementedException();
+        Console.WriteLine("You fall to the ground as the last spark of life leaves your body and your\n" +
+                          "vision goes dark. You died.\n" +
+                          "(press enter to continue)");
+        hero.Location = "gameover";
+        Console.ReadLine();
     }
 
-    public static void GameOver(Hero hero)
-    {   
-        // reset hero and monster (add monster to third room)
-        // TODO: hero.Defending not resetting on new round
-        throw new NotImplementedException();
+    public static void GameOver(Hero hero, Monster minotaur)
+    {
+        if (Program.AskYesOrNo("Thank you for playing! Do you wish to play again?"))
+        {
+            hero.Reset();
+            minotaur.Reset(250, 30);
+            return;
+        }
+
+        hero.Location = "quit";
+        Console.WriteLine("Good bye!");
+        Console.ReadLine();
     }
 }
