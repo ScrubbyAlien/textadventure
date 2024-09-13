@@ -285,7 +285,7 @@ public static class Rooms
 
     public static void GameOver(Hero hero, Monster minotaur)
     {
-        if (Program.AskYesOrNo("Thank you for playing! Do you wish to play again?"))
+        if (Program.AskYesOrNo($"Thank you for playing, {hero.Name}! Do you wish to play again?"))
         {
             hero.Reset();
             minotaur.Reset(250, 30);
