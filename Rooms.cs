@@ -51,13 +51,13 @@ public static class Rooms
                     case "left":
                         if (hero.Items.Contains("key"))
                         {
-                            Console.WriteLine("The door is locked but the key you found in the previous room unlocks it. \n" +
+                            Console.WriteLine("At the back of the hallway there is a locked door but the key you found in the previous room unlocks it. \n" +
                                               "You enter the room (press enter to continue)");
                             hero.Items.Remove("key");
                             hero.Location = "lockedroom";
                             break;
                         }
-                        Console.WriteLine("The door is locked and you turn back. You may enter the room on the right.");
+                        Console.WriteLine("At the back of the hallway there is a locked door and you turn back. You may enter the room on the right.");
                         answerList.Remove("left");
                         break;
                 
@@ -73,7 +73,7 @@ public static class Rooms
 
     public static void LockedRoom(Hero hero)
     {
-        Console.WriteLine("Inside the locked room you find a shiny sword!");
+        Console.WriteLine("Inside the room you find a shiny sword!");
 
         if (Program.AskYesOrNo("Do you want it instead of your wooden sword?"))
         {
@@ -190,9 +190,7 @@ public static class Rooms
         Console.WriteLine("The minotaur is preparing to charge at you. What do you do?\n" +
                           "Attack it? Defend yourself? Try to talk it out?");
         List<string> answerList = ["attack", "defend", "talk"];
-        // if (hero.Items.Contains("cursedamulet")) answerList.Add("use cursed amulet");
-        // if (hero.Items.Contains("blessedamulet")) answerList.Add("use blessed amulet");
-        
+       
         switch (Program.MakeDecision(answerList))
         {
             case "attack":

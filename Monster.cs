@@ -12,6 +12,9 @@ public class Monster
         _name = name;
     }
     
+    // if statements are used to determine which text is written to the screen depending on what type of monster it is.
+    // This is very inefficient but for the scale of the project it doesn't matter.
+    // A cleaner solution would be to create child classes of monster and override this function instead
     public void MakeAttack(Hero hero)
     {
         switch (Program.RollDice(3))
@@ -67,9 +70,7 @@ public class Monster
                     Console.WriteLine("The goblin starts rocking out. It seems difficult to land a hit.");
                     break;
                 }
-
                 break;
-                
         }
         
     }

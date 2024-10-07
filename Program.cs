@@ -1,7 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System;
-
-namespace TextAdventure
+﻿namespace TextAdventure
 {
     internal class Program
     {

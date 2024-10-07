@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\a24sames\\.nuget\\packages\\": {}
+    "C:\\Users\\samue\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\a24sames\\RiderProjects\\textadventure\\textadventure.csproj",
+      "projectUniqueName": "C:\\Users\\samue\\RiderProjects\\textadventure\\textadventure.csproj",
       "projectName": "textadventure",
-      "projectPath": "C:\\Users\\a24sames\\RiderProjects\\textadventure\\textadventure.csproj",
-      "packagesPath": "C:\\Users\\a24sames\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\a24sames\\RiderProjects\\textadventure\\obj\\",
+      "projectPath": "C:\\Users\\samue\\RiderProjects\\textadventure\\textadventure.csproj",
+      "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samue\\RiderProjects\\textadventure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\a24sames\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -38,6 +38,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -59,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
